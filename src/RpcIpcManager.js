@@ -9,11 +9,14 @@ This is used to receive and respond to RPC actions received over IPC.
 
 @param object lib   - The function library used with rpc
 @param string scope - This thread's scope (electron, main-renderer etc)
+@param object options
+@param boolean options.ignoreMissingFunctions if set to tru, promise won't be
+reject if the function is missing in library
 *****************************************************************************/
 
 
 class RpcIpcManager {
-    constructor(lib, scope) {
+    constructor(lib, scope, options = { ignoreMissingFunctions: false }) {
         // Check the lib for the functionToRun
         const getFunction = (functionName) => {
             return get(lib, functionName);
@@ -58,6 +61,7 @@ class RpcIpcManager {
                     Promise.resolve(result).then(resolve).catch(reject);
                 }
                 else {
+                    if (options.ignoreMissingFunctions) return;
                     reject({ error: 'Function not found.' })
                 }
             }
