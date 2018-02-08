@@ -18,7 +18,7 @@
   "homepage": "https://github.com/MrBlenny/electron-simple-rpc#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "electron-simple-ipc": "github:alexstrat/electron-simple-ipc",
+    "electron-simple-ipc": "github:alexstrat/electron-simple-ipc#905c1de9207993bda298537193ce1018b07327d6",
     "lodash": "^4.17.4",
     "uuid": "^3.0.1"
   }
